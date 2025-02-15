@@ -16,5 +16,15 @@ public class AsciiArrayString {
         String secondString = new String (ascii,0,1);
         System.out.println(secondString);
 
+
+        char character[]= { 'R','i','f','a','t'};
+
+        String strr = new String(character);
+
+        System.out.println(strr);
+
+        String newS= new String(strr);
+        System.out.println(newS);
+
     }
 }
