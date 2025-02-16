@@ -1,6 +1,6 @@
 package Loop.Task;
 
-
+import java.util.Scanner;
 
 public class ReversePyramid {
 
@@ -30,7 +30,8 @@ public class ReversePyramid {
 
     public static void main(String[] args)
      {
-        int n=5;
+        Scanner nr = new Scanner(System.in);
+        int n = nr.nextInt();
         printedValue(n);
        
     }
