@@ -59,7 +59,8 @@ class SavingsAccount extends BankAccount{
 public class Test{
    public static void main(String[] args) {
       BankAccount b = new SavingsAccount("123456", 1000);
-      b.deposit(500);   
+      b.deposit(500);  
+      b.withdraw(2000); 
 
       System.out.println("Account Number: "+b.getAccountNumber());
       System.out.println("Balance: "+b.getBalance()); 
