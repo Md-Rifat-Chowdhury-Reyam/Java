@@ -1,36 +1,51 @@
-public class Animal{
+abstract class Animal{
+    private String name;
 
-    String name, breed, color;
-
-    public Animal(String name, String breed, String color)
+    public Animal(String name)
     {
-        this.name = name;
-        this.breed = breed;
-        this.color= color;
+        this.name= name;
 
     }
+    public abstract void makeSound();
 
     public String getName()
-    {return name;}
+    {
+        return name;
+    }    
+}
 
-    public String getBreed()
-    {return breed;}
-
-    public String getColor(){
-        return color;
+class Dog extends Animal{
+    public Dog(String name)
+    {
+        super(name);
     }
 
-    @Override public String toString(){
-        return("This is Cat  name is "+this.getName()+" its breed from "+ this.getBreed()+" its color "+this.getColor());
-        
-
+    @Override
+    public void makeSound()
+    {
+        System.out.println(getName()+" Barking");
     }
+}
 
 
+class cat extends Animal{
+    public cat ( String name)
+    {
+        super(name);
+    
+    }
+    @Override
+    public void makeSound()
+    {
+        System.out.println(getName()+" Meowing");
+    }
+}
 
+class Test{
     public static void main(String[] args) {
-        Animal obj = new Animal("pussy", "Australian"  , "White");
-        System.out.println(obj.toString());
-        
+        Animal a = new Dog ("Dog");
+        Animal a1 = new cat("Cat");
+        a.makeSound();
+        a1.makeSound();
     }
 }
