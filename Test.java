@@ -9,6 +9,7 @@ abstract class BankAccount{
       this.balance = balance;
 
    }
+   
 
    public String getAccountNumber()
    {
@@ -56,6 +57,37 @@ class SavingsAccount extends BankAccount{
    }
 }
 
+
+class CurrentAccount extends BankAccount{
+   public CurrentAccount(String acountNumber, double  balance)
+   {
+      super(acountNumber, balance);
+   }
+
+   @Override
+   public void deposit( double amount)
+   {
+      setBalance(getBalance()+amount);
+      
+   }
+
+   @Override 
+   public void withdraw(double amount)
+   {
+      if(getBalance() >= amount)
+   {
+      setBalance(getBalance()-amount);
+    
+      System.out.println("current balance is "+ getBalance());
+   }
+   else{
+      System.out.println("Insufficient balance");
+   }
+}}
+
+
+
+
 public class Test{
    public static void main(String[] args) {
       BankAccount b = new SavingsAccount("123456", 1000);
@@ -64,5 +96,9 @@ public class Test{
 
       System.out.println("Account Number: "+b.getAccountNumber());
       System.out.println("Balance: "+b.getBalance()); 
+
+      BankAccount c = new CurrentAccount(b.getAccountNumber(),b.getBalance());
+         c.withdraw(50);
+      System.out.println("now your Balance is "+ c.getBalance());  
    }
 }
