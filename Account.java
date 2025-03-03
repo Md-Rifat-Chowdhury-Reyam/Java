@@ -137,3 +137,30 @@ class BankAccount{
 }
 
 
+class AccountMain
+{
+    public static void main(String[] args) {
+
+        BankAccount bank = new BankAccount();
+
+        SavingsAccount s = new SavingsAccount(1000, 1.25);
+        CurrentAccount c = new CurrentAccount(5000, 1000);
+
+        bank.addAccount(s);
+        bank.addAccount(c);
+
+        bank.deposit(s, 100);
+        bank.deposit(c, 500);
+
+        bank.withdraw(s, 150);
+        
+
+        bank.PrintAccount();
+
+        s.getInterest();
+
+        bank.PrintAccount();
+        
+    }
+}
+
