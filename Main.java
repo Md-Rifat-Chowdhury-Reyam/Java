@@ -1,108 +1,48 @@
-abstract class BankAccount{
-    private String AccountNumber;
-    private double balance;
+package Interface;
 
-    public BankAccount(String AccountNumber, double balance)
-    {
-        this.AccountNumber = AccountNumber;
-        this.balance = balance;
+import java.awt.*;
+import java.awt.Graphics;
 
-    }
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-    public String getAccountNumber()
-    {return AccountNumber;}
-
-    public double getBalance()
-    {
-        return balance;
-    }
-
-    protected void setBalance(double balance)
-    {
-        this.balance = balance;
-    }
-    public abstract void deposit(double amount);
-    public abstract void withdraw( double amount);
+interface Drawing
+{
+  void draw();
 }
 
+class Circle implements Drawing{
 
-class SavingsAccount extends BankAccount {
-   
-    public SavingsAccount(String accountNumber, double balance) {
-        super(accountNumber, balance);
-    }
-
-  
-    @Override
-    public void deposit(double amount) {
-        
-        setBalance(getBalance() + amount);
-        
-        System.out.println("Deposit of $" + amount + " successful. Current balance: $" + getBalance());
-    }
-
+    public void draw()
+    {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
     
-    @Override
-    public void withdraw(double amount) {
-        
-        if (getBalance() >= amount) {
-           
-            setBalance(getBalance() - amount);
-         
-            System.out.println("Withdrawal of $" + amount + " successful. Current balance: $" + getBalance());
-        } else {
-       
-            System.out.println("Insufficient funds. Withdrawal failed.");
-        }
+        JPanel panel = new JPanel()
+        {
+            @Override
+            protected void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                g.setColor(Color.RED);
+                g.fillOval(100, 100, 200, 200);
+            }
+        };
+        frame.add(panel);
     }
-}
+   } 
 
-
-class CurrentAccount extends BankAccount {
-    
-    
-    public CurrentAccount(String accountNumber, double balance) {
-        super(accountNumber, balance); 
-    }
-
- 
-    @Override
-    public void deposit(double amount) {
-       
-        setBalance(getBalance() + amount);
-        
-        System.out.println("Deposit of $" + amount + " successful. Current balance: $" + getBalance());
-    }
-
-    
-    @Override
-    public void withdraw(double amount) {
-        
-        if (getBalance() >= amount) {
-           
-            setBalance(getBalance() - amount);
-          
-            System.out.println("Withdrawal of $" + amount + " successful. Current balance: $" + getBalance());
-        } else {
-           
-            System.out.println("Insufficient funds. Withdrawal failed.");
-        }
-    }
-}
- 
-
-public class Main {
-    
+   public class Main
+   {
     public static void main(String[] args) {
-       
-        SavingsAccount s = new SavingsAccount("2221", 200);
-        s.deposit(100);
-        s.withdraw(50);
-        s.withdraw(300);
-
-        CurrentAccount c = new CurrentAccount("2222", 500);
-        c.deposit(200); 
-        c.withdraw(100);
-        c.withdraw(700);
+        
+        /**
+         * Creates an instance of the Circle class and assigns it to the Drawing interface reference.
+         * This demonstrates polymorphism where a Circle object is treated as a Drawing type.
+         */
+        Drawing circle = new Circle();
+        circle.draw();
     }
-}
+   }
