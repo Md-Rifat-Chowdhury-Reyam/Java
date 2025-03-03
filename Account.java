@@ -1,5 +1,8 @@
 package Interface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface Account {
 
     public void deposit(double amount);
@@ -90,6 +93,46 @@ class CurrentAccount implements Account{
         this.creditLimit = creditLimit;
     }
 
+
+}
+
+class BankAccount{
+    private List<Account> accounts; // declare a private List to store the accounts
+
+    public BankAccount ()
+    {
+        accounts = new ArrayList<>();
+    }
+
+    public void addAccount(Account account)
+    {
+        accounts.add(account);
+
+    }
+
+    public void removeAccount(Account account)
+    {
+        accounts.remove(account);
+
+    }
+
+    public void deposit(Account account, double amount)
+    {
+        account.deposit(amount);
+    }
+
+    public void withdraw(Account account, double amount)
+    {
+        account.withdraw(amount);
+    }
+
+    public  void PrintAccount()
+    {
+        for(Account account : accounts)
+        {
+            System.out.println("Balance: "+account.getBalance());
+        }
+    }
 
 }
 
