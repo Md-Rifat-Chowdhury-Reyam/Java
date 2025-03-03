@@ -52,3 +52,45 @@ class SavingsAccount implements Account{
     }
 
 }
+
+class CurrentAccount implements Account{
+    double balance;
+    double creditLimit;
+
+    public CurrentAccount (double balance, double creditLimit)
+    {
+        this.balance = balance;
+        this.creditLimit = creditLimit;
+    }
+
+    @Override
+    public void deposit(double amount)
+    {
+        balance = balance +amount;
+        
+    }
+
+    @Override
+    public void withdraw(double amount)
+    {
+        if(balance+ creditLimit >= amount)
+        {
+            balance = balance - amount;
+        }
+    }
+
+    @Override
+    public double getBalance()
+    {
+        return balance;
+    }
+
+    public void OverCreditLimit(double creditLimit)
+    {
+        this.creditLimit = creditLimit;
+    }
+
+
+}
+
+
