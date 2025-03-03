@@ -1,48 +1,57 @@
 package Interface;
 
 import java.awt.*;
-import java.awt.Graphics;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-interface Drawing
-{
-  void draw();
-}
+public interface dMain {
 
-class Circle implements Drawing{
+    void draw();
+        
+} 
+
+class Circle implements dMain{
 
     public void draw()
     {
         JFrame frame = new JFrame();
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 300);
+        frame.setSize(600, 600);
         frame.setVisible(true);
-    
+
         JPanel panel = new JPanel()
         {
             @Override
-            protected void paintComponent(Graphics g)
+
+            public void paintComponent(Graphics g)
             {
                 super.paintComponent(g);
-                g.setColor(Color.RED);
-                g.fillOval(100, 100, 200, 200);
+                g.setColor(Color.YELLOW);
+                int[] xPoints = {
+                    100,
+                    100,
+                    100
+                };
+                int[] yPoints = {
+                    100,
+                    300,
+                    300
+                };
+                g.fillPolygon(xPoints, yPoints, 3);
             }
         };
         frame.add(panel);
-    }
-   } 
 
-   public class Main
-   {
-    public static void main(String[] args) {
-        
-        /**
-         * Creates an instance of the Circle class and assigns it to the Drawing interface reference.
-         * This demonstrates polymorphism where a Circle object is treated as a Drawing type.
-         */
-        Drawing circle = new Circle();
-        circle.draw();
+
+
     }
-   }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        c.draw();
+    }
+}
+
