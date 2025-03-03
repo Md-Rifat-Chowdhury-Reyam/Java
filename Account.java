@@ -1,166 +1,149 @@
+
 package Interface;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public interface Account {
+interface Account {
 
     public void deposit(double amount);
-    public void withdraw(double amount);
-
+    public  void withdraw(double amount);
     public double getBalance();
 
 
-    
+     
 }
 
-class SavingsAccount implements Account{
+
+class SavAcc implements Account{
 
     double balance;
     double interestRate;
 
-    public SavingsAccount(double balance, double interestRate)
-    {
+
+    public SavAcc(double balance, double interestRate){
         this.balance = balance;
         this.interestRate = interestRate;
+        System.out.println("Current balance: $"+balance);
     }
 
-    @Override
+    @Override   
+
     public void deposit(double amount)
     {
-        balance = balance + amount; //balance += amount;
+        balance+= amount;
+        System.out.println("Deposit of $"+amount+" Successfull");
     }
 
     @Override
     public void withdraw(double amount)
     {
-        if(balance>= amount)
-        {
-            balance = balance -amount;
+        if(balance >= amount)
 
-        }
-        else{System.out.println("Insuficiant Balance you have");}
-    }
+            {
+                balance -= amount;
+                System.out.println("Withdraw of  $"+amount+ " successdull"+" Current Balance: $"+balance);
 
-   
-    @Override
-    public double getBalance() {
-        return balance;
-       
-    }
+            }
+         else{
+            System.out.println("Insufficient Balance");
+         }   
 
-    public double getInterest()
-    {
-        return (balance += balance*interestRate/100);
-    }
-
-}
-
-class CurrentAccount implements Account{
-    double balance;
-    double creditLimit;
-
-    public CurrentAccount (double balance, double creditLimit)
-    {
-        this.balance = balance;
-        this.creditLimit = creditLimit;
-    }
-
-    @Override
-    public void deposit(double amount)
-    {
-        balance = balance +amount;
         
-    }
-
-    @Override
-    public void withdraw(double amount)
-    {
-        if(balance+ creditLimit >= amount)
-        {
-            balance = balance - amount;
-        }
     }
 
     @Override
     public double getBalance()
     {
+        System.out.println("Current Balance: $"+balance);
         return balance;
     }
 
-    public void OverCreditLimit(double creditLimit)
-    {
-        this.creditLimit = creditLimit;
+    public double getInterestRate()
+    {  
+         
+        return balance = balance+ balance*interestRate/100;
+        
     }
-
 
 }
 
-class BankAccount{
-    private List<Account> accounts; // declare a private List to store the accounts
 
-    public BankAccount ()
+class CurrAcc implements Account{
+    double balance;
+    double creditLimit = 1000;
+
+    public CurrAcc(double balance)
     {
-        accounts = new ArrayList<>();
+        this.balance = balance;
+        
+        System.out.println("Current balance: $"+balance);
     }
 
-    public void addAccount(Account account)
-    {
-        accounts.add(account);
 
+    @Override 
+    public void deposit(double amount)
+    {
+        balance += amount;
+        System.out.println("Deposit of $"+amount+" Successfull");
     }
 
-    public void removeAccount(Account account)
+    @Override
+    public void withdraw(double amount)
     {
-        accounts.remove(account);
-
-    }
-
-    public void deposit(Account account, double amount)
-    {
-        account.deposit(amount);
-    }
-
-    public void withdraw(Account account, double amount)
-    {
-        account.withdraw(amount);
-    }
-
-    public  void PrintAccount()
-    {
-        for(Account account : accounts)
+        if(balance >= amount)
         {
-            System.out.println("Balance: "+account.getBalance());
+            if(creditLimit >= amount)
+            {
+                
+                 balance -= amount;
+                 System.out.println("Withdraw of $"+amount+" Successfull"+" Current Balance: $"+balance);
+
+            }
+
+            
+            else{
+                System.out.println("Credit limit exceeded");
+            }
+            
+            
         }
+
+        
+        else{
+            System.out.println("Insufficient Balance");
+        }
+
     }
+
+    @Override
+    public double getBalance()
+    {
+        System.out.println("Now your balance is $"+balance);
+        return balance;
+    }
+
+
 
 }
 
 
-class AccountMain
-{
+class Accountt{
     public static void main(String[] args) {
 
-        BankAccount bank = new BankAccount();
-
-        SavingsAccount s = new SavingsAccount(1000, 1.25);
-        CurrentAccount c = new CurrentAccount(5000, 1000);
-
-        bank.addAccount(s);
-        bank.addAccount(c);
-
-        bank.deposit(s, 100);
-        bank.deposit(c, 500);
-
-        bank.withdraw(s, 150);
+       
         
+        SavAcc s = new SavAcc(1000, 5);
 
-        bank.PrintAccount();
+        s.deposit(1000);
+        s.getBalance();
 
-        s.getInterest();
+        s.getInterestRate();
+        s.getBalance();
 
-        bank.PrintAccount();
-        
+        System.out.println("====================================");
+
+        CurrAcc c = new CurrAcc(5000);
+       c.deposit(1000);
+       c.getBalance();
+       c.withdraw(1000);
     }
 }
 
