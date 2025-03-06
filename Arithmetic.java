@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+
 
 public class Arithmetic 
 {
@@ -10,7 +10,7 @@ public class Arithmetic
             {
                 System.out.println(a + b);
             }
-
+ 
             public void sub()
             {
                 System.out.println(a-b);
