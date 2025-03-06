@@ -1,5 +1,5 @@
 
-import utill.*;
+
 public class BasicClass{
 
     String name;

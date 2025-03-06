@@ -1,4 +1,4 @@
-package OOP.Inheritance;
+
 
 public class setGet {
 
@@ -10,6 +10,8 @@ public class setGet {
     {
         CustomerName= n;
         CustomerSalary= s;
+
+        
                  
     }
 
