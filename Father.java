@@ -1,8 +1,10 @@
-public class Father extends Grand
+public class Father {
+    
+    public void print(String son, String Da)
 {
-     public void print()
-     {
-        super.print();
-        System.out.println("I am Father");
-     }
+    
+    System.out.println("I am father of "+son+ " and "+ Da);
+    
+
+}
 }
