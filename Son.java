@@ -1,11 +1,8 @@
-public class Son extends Father {
-
+public class Son extends Father  {
     
-
-    public void  printS()
+    public void print()
     {
-        
-        System.out.println(" I am son of "+ nameF);
+        super.print();
+        System.out.println("I am son ");
     }
-    
 }
