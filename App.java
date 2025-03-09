@@ -1,18 +1,12 @@
 public class App {
     public static void main(String[] args) throws Exception {
-       
-        Child c = new Child();
-        c.printF();
-        c.printM();
+        
+        Strenger s = new Strenger();
+        Parent p = new Parent();
+        p.printH();
+        p.Greedings(4);
 
-        SolarSystem s = new SolarSystem();
-        Earth e = new Earth();
-        Mars m = new Mars();
-        Moon mo = new Moon();
+        s.Greedings(5);
 
-        System.out.println(m instanceof SolarSystem);
-        System.out.println(e instanceof SolarSystem);
-        System.out.println(mo instanceof SolarSystem);
-        System.out.println(mo instanceof Earth);
     }
 }
