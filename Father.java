@@ -1,10 +1,9 @@
-public class Father {
-    
-    public void print(String son, String Da)
+public class Father extends Person
 {
+    @Override
+    public void Print()
+    {
+        System.out.println("I am Father ");
+    }
     
-    System.out.println("I am father of "+son+ " and "+ Da);
-    
-
-}
 }
