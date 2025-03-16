@@ -1,9 +1,10 @@
 public class App
 {
-    static boolean  searchMetrix(int [][] arr, int x)
+    static boolean searchMetrix(int [][] arr, int x)
     {
         int m = arr.length;
         int n = arr[0].length;
+
 
         for(int i = 0; i<m; i++)
         {
@@ -14,22 +15,27 @@ public class App
                     return true;
                 }
             }
-            
-        }return false;
-
         
+        }
+        return false;
     }
 
     public static void main(String[] args) {
-        int x = 3;
-        int [][]arr ={{1,2,3},{4,3,5},{2,34,5}};
-        if (searchMetrix(arr, x))
-         {
+        int x= 50;
+        int[][] arr = { { 0, 6, 8, 9, 11 },
+                   { 20, 22, 28, 29, 31 },
+                   { 36, 38, 50, 61, 63 },
+                   { 64, 66, 100, 122, 128 } };
 
-            System.out.println("True "+ x + " in the array"+ arr.length);
+        if(searchMetrix(arr, x))
+        {
+            System.out.println("true");
         }
         else{
-            System.out.println("");
+            System.out.println("false");
         }
+
     }
+
+   
 }
