@@ -1,41 +1,41 @@
-public class App
-{
-    static boolean searchMetrix(int [][] arr, int x)
+import java.util.Arrays;
+
+public class App {
+
+    public static  void sortAr(int [][] arr)
     {
-        int m = arr.length;
-        int n = arr[0].length;
-
-
-        for(int i = 0; i<m; i++)
+        for(int []row : arr)
         {
-            for(int j = 0; j<n; j++)
-            {
-                if(arr[i][j] == x)
-                {
-                    return true;
-                }
-            }
-        
+           Arrays.sort(row);
         }
-        return false;
     }
 
     public static void main(String[] args) {
-        int x= 50;
-        int[][] arr = { { 0, 6, 8, 9, 11 },
-                   { 20, 22, 28, 29, 31 },
-                   { 36, 38, 50, 61, 63 },
-                   { 64, 66, 100, 122, 128 } };
+        int [][] arr1 ={
+            {77, 11, 22, 3},
+            {11, 89, 1, 12},
+            {32, 11, 56, 7},
+            {11, 22, 44, 33}
 
-        if(searchMetrix(arr, x))
+        };
+
+        sortAr(arr1);
+        System.out.println(" [ ");
+        for(int []row : arr1)
         {
-            System.out.println("true");
-        }
-        else{
-            System.out.println("false");
-        }
+            System.out.print( " [");
+            for(int i =0; i<arr1.length; i++)
+            {
+                if(i>0)
+                {
+                    System.out.print(" ' ");
+                }
+                System.out.print(row[i]);
+            }
+            System.out.println(" ] ");
 
+        }
     }
+    
 
-   
 }
