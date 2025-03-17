@@ -1,57 +1,39 @@
-package Interface;
+import java.util.Arrays;
 
-import java.awt.*;
+public class Main{
 
-import javax.swing.*;
-
-public interface dMain {
-
-    void draw();
-        
-} 
-
-class Circle implements dMain{
-
-    public void draw()
+    public static void sortA(int [][] arr)
     {
-        JFrame frame = new JFrame();
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
-        frame.setVisible(true);
-
-        JPanel panel = new JPanel()
+        for(int [] row : arr)
         {
-            @Override
-
-            public void paintComponent(Graphics g)
-            {
-                super.paintComponent(g);
-                g.setColor(Color.YELLOW);
-                int[] xPoints = {
-                    100,
-                    100,
-                    100
-                };
-                int[] yPoints = {
-                    100,
-                    300,
-                    300
-                };
-                g.fillPolygon(xPoints, yPoints, 3);
-            }
-        };
-        frame.add(panel);
-
-
-
+            Arrays.sort(row);
+        }
     }
-}
 
-public class Main {
     public static void main(String[] args) {
-        Circle c = new Circle();
-        c.draw();
-    }
-}
+        int [][] arr =  {
+            {77, 11, 22, 3},
+            {11, 89, 1, 12},
+            {32, 11, 56, 7},
+            {11, 22, 44, 33}
+        };
 
+        sortA(arr);
+
+
+        System.out.println(" .. ");
+        for (int [] row : arr)
+        {
+            System.out.println(" ' ");
+            for(int i =0; i< arr.length; i++)
+            {
+                if(i>0)
+                {
+                    System.out.print(",");
+                }
+                System.out.print(row[i]);
+            }
+        }
+    }
+    
+}
