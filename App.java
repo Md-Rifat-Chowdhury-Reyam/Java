@@ -1,54 +1,53 @@
-import java.util.Arrays;
+import java.time.Duration;
+import java.time.Instant;
 
-public class App{
-    static int[][] transpose(int[][] mat, int row, int col)
+public class App
+{
+    static void rowWise(int[][] arr)
     {
-        int[][] tr = new int[col][row];
-        for(int i = 0; i < row; i++)
-        {
-            for(int j= 0; j <col; j++)
+        int row = arr.length;
+        int col = arr[0].length;
+
+        for(int i = 0; i <row; i++)
+        { for(int j = 0; j< col; j++)
             {
-                tr[j][i] = mat[i][j];
+                arr[i][j]++;
+            }
+         
+        
+        }
+    }
+
+
+    static void colWise(int[][] arr)
+    {
+        int row =arr.length;
+        int col = arr[0].length;
+
+        for(int i = 0; i< col; i++)
+        {
+            for( int j = 0; j< row  ; j++)
+            {
+                arr[i][j]++;
 
             }
         }
-        return tr;
     }
 
-    static void sortRow(int[][] arr)
-    {
-        for(int i = 0; i < arr.length; i++)
-        {
-            Arrays.sort(arr[i]);
-
-        }
-    }
-
-    static void sortCol(int[][] mat, int r, int c)
-    {
-        int[][] arr = transpose(mat, r, c);
-        sortRow(arr);
-
-        mat = transpose(arr, r, c);
-
-        for(int i =0 ; i < r; i++)
-        {
-            for(int j = 0; j < c; j++)
-            {
-                System.err.print(mat[i][j]+ " ");
-            }
-            System.out.println();
-        }
-    }
 
     public static void main(String[] args) {
-        int[][] mat ={{111,2,5554},
-    {443,4,55,632},{23423,3534,56}};
+        
+        int n = 1000;
+        int [][] arr = new int[n][n];
 
-        int r = mat.length;
-        int c = mat[0].length;
-        sortCol(mat, r, c);
+        Instant start = Instant.now();
+        rowWise(arr);
+        Instant end = Instant.now();
+        System.out.println("Row access time "+ Duration.between(start, end));
 
+         start = Instant.now();
+        colWise(arr);
+         end = Instant.now();
+        System.out.println("Column access time"+ Duration.between(start, end));
     }
 }
-
