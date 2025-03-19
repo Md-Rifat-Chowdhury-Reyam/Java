@@ -4,9 +4,12 @@ public class ReverseTA {
         char [] arr = {'R','I','F', 'A','T'};
         int row = arr.length;
 
-         for(int i = row - 1; i >= 0; i--)
+         int i = 0;
+
+         while(i < row)
          {
-            System.out.print(arr[i]+ " ");
+            System.out.print(arr[i]+" ");
+            i++;
          }
     }
     
