@@ -1,53 +1,39 @@
-import java.time.Duration;
-import java.time.Instant;
+public class App {
 
-public class App
-{
-     static void rowWise(int[][] arr)
-     {
-        int r = arr.length;
-        int c= arr[0].length;
-
-        for(int i = 0 ; i < r; i++)
+    public static Node insert(Node root, int data)
+    {
+        if (root == null) {
+            root = new Node(data);
+            
+        }
+        else
         {
-            for(int j = 0; j < c; j++)
-            {
-                arr[i][j]++;
-            }
+            root.right = insert(root, data);
+        }
+        return root;
+    }
+
+
+    public static void printTree(Node node)
+
+    {
+        if(node !=  null)
+        {
+            System.out.println(node.data + "  hello");
+            printTree(node.right);
 
         }
-     }
-
-     static void colWise(int [][]arr)
-     {
-        int r= arr.length;
-        int c = arr[0].length;
-
-        for(int j = 0; j< c; j++)
-        {
-            for(int i = 0; i < r; i++ )
-            {
-                arr[i][j]++;
-
-            }
-
-        }
-
-     }
-
-     public static void main(String[] args) {
-        int n = 1000;
-        int [][] arr= new int[n][n];
-
-        Instant start = Instant.now();
-        rowWise(arr);
-        Instant end = Instant. now();
-        System.out.println("Row check time "+ Duration.between(start, end));
+    }
 
 
-        start = Instant.now();
-        colWise(arr);
-        end = Instant.now();
-        System.out.println("Col check in "+ Duration.between(start, end));
-     }
+   public static void main(String[] args) {
+    
+   
+
+    Node root = new Node(1);
+    insert(root, 2);
+    insert(root, 3);
+    printTree(root);
+   }
+        
 }

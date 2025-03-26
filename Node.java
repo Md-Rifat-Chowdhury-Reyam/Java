@@ -1,11 +1,12 @@
 class Node{
-
     int data;
-    Node next;
+    Node right;
+    Node left;
 
-    Node(int new_data)
+    Node(int val)
     {
-        this.data = new_data;
-        next = null;
+        this.data = val;
+        right = null;
+        left = null;
     }
 }
