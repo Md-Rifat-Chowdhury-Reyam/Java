@@ -1,62 +1,59 @@
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
-public class EventDemo {
-    
+public class EventDemo
+{
     JLabel jlab;
-
     EventDemo()
     {
-        JFrame jframe = new  JFrame("Event Swing");
-        jframe.setSize(300, 200);
-        jframe.setLayout(new FlowLayout());
-
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        JButton jbt = new JButton("Click me");
-        JButton jbt1 = new JButton("open me");
-
+       JFrame jfram = new JFrame("Event Demo");
+       jfram.setSize(300, 300);
+       jfram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
+       jfram.setLayout(new FlowLayout());
+
+
+       jfram.setVisible(true);
+       
+       JButton bt1 = new JButton("Muab");
+       JButton bt2 = new JButton ("Mahadi");
+
+       bt1.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            jlab.setText("I am Muab");
+            
+        } 
+       });
+
+       bt2.addActionListener( new ActionListener() {
         
-
-        jbt1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                jlab.setText("You clicked the button 2");
-            }
-        });
-        jbt.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                jlab.setText("You clicked the button 1");
-            }
-        });
-       
+        public void actionPerformed(ActionEvent e)
+        {
+            jlab.setText("I am Mahadi");
+        }
+       });
 
 
-        jframe.add(jbt);
-        jframe.add(jbt1);
+       jfram.add(bt1);
+       jfram.add(bt2);
 
-
-        jlab = new JLabel("press a button");
-
-        jframe.add(jlab);
-
-        jframe.setVisible(true);
-
-
+       jlab =  new JLabel(" see the name ");
+       jfram.add(jlab);
     }
 
+
     public static void main(String[] args) {
-        
-        SwingUtilities.invokeLater(new Runnable() 
-        {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run()
             {
                 new EventDemo();
             }
         });
     }
-    
-}
+}       
