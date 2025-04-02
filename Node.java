@@ -1,12 +1,20 @@
-class Node{
-    int data;
-    Node right;
-    Node left;
+package AVL;
 
-    Node(int val)
+public class Node {
+
+    int  key;
+    Node left;
+    Node right;
+    Int height;
+
+    Node(int k)
     {
-        this.data = val;
-        right = null;
-        left = null;
+        this.key = k;
+        this.left = null;
+        this.right = null;
+
+        this height = 1;
+        
     }
+    
 }
