@@ -77,28 +77,39 @@ public class AVLinsertion
         int balance = getBalance(node);
 
 
-    if( balance > 1 && key < node.left.key )
-    {
-        return RightRotation(node);
-    }
+        if( balance > 1 && key < node.left.key )
+        {
+            return RightRotation(node);
+        }
 
-    if(balance < -1 && key > node.right.key)
-    {
-        return  LeftRotation(node);
-    }
+        if(balance < -1 && key > node.right.key)
+        {
+            return  LeftRotation(node);
+        }
 
-    if(balance > 1 && key > node.left.key)
-    {
-        node.left = LeftRotation(node.left);
-        return RightRotation(node);
-    }
+        if(balance > 1 && key > node.left.key)
+        {
+            node.left = LeftRotation(node.left);
+            return RightRotation(node);
+        }
 
-    if(balance < -1 && key < node.right.key)
-    {
-        node.right = RightRotation(node.right);
-        return LeftRotation(node);
-    }
-    return node;
+        if(balance < -1 && key < node.right.key)
+        {
+            node.right = RightRotation(node.right);
+            return LeftRotation(node);
+        }
+        return node;
+
+        static void preOrder(Node root)
+        {
+            if(root != null)
+            {
+                System.out.println(root.key + " ");
+                preOrder(root.left);
+                preOrder(root.right);
+            }
+        }
+    }    
     
 
 
