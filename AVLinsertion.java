@@ -1,5 +1,6 @@
 package AVL;
-public class AVLinsertion {
+public class AVLinsertion 
+{
 
     static int height(Node N)
 
@@ -12,7 +13,7 @@ public class AVLinsertion {
         return N.height;
     }
 
-    static Node rightRotate( Node y)
+    static Node RightRotation( Node y)
     {
         Node x = y.left;
         Node T2 = x.right;
@@ -26,7 +27,7 @@ public class AVLinsertion {
         return x;
     }
 
-    static Node LeftRotatio(Node x)
+    static Node LeftRotation(Node x)
     {
         Node y = x.left;
         Node T2 = y.right;
@@ -74,6 +75,37 @@ public class AVLinsertion {
 
         node.height = 1 + Math.max (height(node.left), height(node.right));
         int balance = getBalance(node);
+
+
+    if( balance > 1 && key < node.left.key )
+    {
+        return RightRotation(node);
+    }
+
+    if(balance < -1 && key > node.right.key)
+    {
+        return  LeftRotation(node);
+    }
+
+    if(balance > 1 && key > node.left.key)
+    {
+        node.left = LeftRotation(node.left);
+        return RightRotation(node);
+    }
+
+    if(balance < -1 && key < node.right.key)
+    {
+        node.right = RightRotation(node.right);
+        return LeftRotation(node);
+    }
+    return node;
+    
+
+
+
+    public static void main(String[] args) {
+        
+    }
 
     
 }
