@@ -1,4 +1,3 @@
-package AVL;
 public class AVLinsertion 
 {
 
@@ -100,7 +99,9 @@ public class AVLinsertion
         }
         return node;
 
-        static void preOrder(Node root)
+        
+    }    
+    static void preOrder(Node root)
         {
             if(root != null)
             {
@@ -109,12 +110,23 @@ public class AVLinsertion
                 preOrder(root.right);
             }
         }
-    }    
     
 
 
 
     public static void main(String[] args) {
+
+        Node root = null;
+        root = insert(root, 10);
+        root = insert(root, 30);
+        root = insert(root, 20);
+        root = insert(root, 5);
+        root = insert(root, 3);
+        root = insert(root, 4);
+        root = insert(root, 2); 
+        root = insert(root, 1);
+
+        System.out.println(" order " + preOrder(root));
         
     }
 
