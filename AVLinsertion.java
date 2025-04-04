@@ -39,5 +39,41 @@ public class AVLinsertion {
          return y;
     }
 
+    static int getBalance(Node N)
+    {
+        if (N == null)
+        {
+            return 0;
+
+        }
+        return height(N.left) - (N.right);
+    }
+
+    static Node insert( Node node, int key)
+    {
+        if( node == null)
+        {
+            return (new Node(key));
+        }
+
+        if(key < node.key)
+        {
+            node.left = insert(node.left, key);
+        }
+
+        if(key > node.key)
+        {
+            node.right = insert (node.right, key);
+
+        }
+
+        else{
+            retun node;
+
+        }
+
+        node.height = 1 + Math.max (height(node.left), height(node.right));
+        int balance = getBalance(node);
+
     
 }

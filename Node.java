@@ -5,7 +5,7 @@ public class Node {
     int  key;
     Node left;
     Node right;
-    Int height;
+    int height;
 
     Node(int k)
     {
